@@ -1,0 +1,31 @@
+html
+  head
+    title My Express App
+    link(rel='stylesheet', href='/styles.css')
+block content
+  body
+    header
+      h1 Welcome to my Express app!
+
+    nav
+      ul
+        li
+          a(href='/') Home
+        li
+          a(href='/books/new') Add New Book 
+        li
+          a(href='/contact') Contact
+
+    main
+      h2 Book List
+      each book in books
+        article
+          li
+            a(href=`/edit/${book.isbn}`)= book.title
+          p= book.author
+          form(action=`/delete/${book.isbn}` method=`post`)
+            button(type='submit') Delete
+          br
+          br
+    footer
+      p Copyright © 2023 My Express App

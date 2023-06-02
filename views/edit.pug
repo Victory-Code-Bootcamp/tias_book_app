@@ -1,0 +1,43 @@
+html
+  head
+    title My Express App
+    link(rel='stylesheet', href='/styles.css')
+block content
+  header
+    h1 Add a new book to the library
+
+  nav
+    ul
+      li
+        a(href='/books') Books
+      li
+        a(href='/books/edit') Edit Books
+      li
+        a(href='/books/new') Add New Book
+
+  p Enter Information For New Book
+  form(action= '' method='post')
+    p ISBN
+    input(type='text', name='isbn' value=book.isbn)
+    p Title
+    input(type='text', name='title' value=book.title)
+    p Subtitle
+    input(type='text', name='subtitle' value= book.subtitle)
+    p Author
+    input(type='text', name='author' value= book.author)
+    p Published
+    input(type='text', name='published' value= book.published)
+    p Publisher
+    input(type='text', name='publisher' value= book.publisher)
+    p Pages
+    input(type='text', name='pages' value= book.pages )
+    p Description
+    input(type='text', name='description' value= book.description)
+    p Website
+    input(type='text', name='website' value= book.website)
+    br
+    br
+    button(type='submit') Submit
+
+  footer
+    p Copyright © 2023 My Express App
