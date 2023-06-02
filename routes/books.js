@@ -1,19 +1,26 @@
+const Book = require("../models/Book");
 var express = require("express");
 var router = express.Router();
+var mongoose = require("mongoose");
+require("dotenv").config();
 
 var bookObject = require("../bookList");
+mongoose.connect(
+  `mongodb+srv://tiachristensen:${process.env.MONGODB}@cluster0.oirtthh.mongodb.net/`
+);
 
 /* GET home page. */
-router.get("/", function (req, res, next) {
-  res.render("index", { books: bookObject.books });
+router.get("/", async function (req, res, next) {
+  const books = await Book.find();
+  res.render("index", { books: books });
 });
 // display form
 router.get("/new", function (req, res, next) {
   res.render("new");
 });
 // add new book
-router.post("/new", function (req, res, next) {
-  bookObject.books.push(req.body);
+router.post("/new", async function (req, res, next) {
+  await Book.create(req.body);
   res.redirect("/");
 });
 // display selected book
